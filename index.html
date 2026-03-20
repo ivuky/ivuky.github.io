@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antonio – Vodoinstalacije, Pločice & Adaptacije</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=call,mail,schedule" />
+<style>
+:root {
+  --navy:  #0D1B2A;
+  --navy2: #1A2E42;
+  --navy3: #223550;
+  --blue:  #1E6FBF;
+  --blue2: #2E8DE8;
+  --cyan:  #4CC9F0;
+  --white: #FFFFFF;
+  --muted: rgba(255,255,255,0.55);
+  --border:rgba(255,255,255,0.10);
+  --card:  rgba(255,255,255,0.05);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 6%;background:rgba(13,27,42,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.logo{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem;color:var(--white);text-decoration:none;letter-spacing:-0.02em;}
+.logo span{color:var(--cyan);}
+.nav-links{display:flex;gap:2.2rem;list-style:none;}
+.nav-links a{font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-btn{background:var(--blue2);color:#fff;padding:.55rem 1.4rem;border-radius:6px;font-size:.82rem;font-weight:500;text-decoration:none;transition:background .2s,transform .15s;letter-spacing:.04em;}
+.nav-btn:hover{background:var(--cyan);color:var(--navy);transform:translateY(-1px);}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:7rem 6% 4rem;position:relative;overflow:hidden;gap:3rem;}
+.hero-bg-dots{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(76,201,240,.12) 1px,transparent 1px);background-size:36px 36px;}
+.hero-bg-glow{position:absolute;right:-10%;top:10%;width:55vw;height:55vw;max-width:700px;max-height:700px;background:radial-gradient(ellipse,rgba(30,111,191,.25) 0%,transparent 70%);pointer-events:none;}
+.hero-left{position:relative;z-index:2;}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);background:rgba(76,201,240,.10);border:1px solid rgba(76,201,240,.2);padding:.35rem .9rem;border-radius:20px;margin-bottom:1.8rem;}
+.hero-tag::before{content:'●';font-size:.5rem;}
+h1{font-family:'Outfit',sans-serif;font-weight:800;font-size:clamp(2.6rem,4.5vw,5rem);line-height:1.05;letter-spacing:-.03em;color:var(--white);margin-bottom:1.5rem;}
+h1 .accent{color:var(--cyan);}
+.hero-desc{font-size:1.05rem;line-height:1.75;color:var(--muted);max-width:440px;margin-bottom:2.5rem;font-weight:300;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--blue2);color:#fff;padding:.9rem 2rem;border-radius:8px;font-size:.92rem;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:background .2s,transform .15s;letter-spacing:.03em;}
+.btn-primary:hover{background:var(--cyan);color:var(--navy);transform:translateY(-2px);}
+.btn-ghost{border:1px solid var(--border);color:var(--muted);padding:.9rem 2rem;border-radius:8px;font-size:.92rem;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:border-color .2s,color .2s;}
+.btn-ghost:hover{border-color:rgba(255,255,255,.35);color:var(--white);}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);}
+.stat-num{font-family:'Outfit',sans-serif;font-size:1.9rem;font-weight:800;color:var(--cyan);line-height:1;}
+.stat-lbl{font-size:.75rem;color:var(--muted);margin-top:.25rem;letter-spacing:.06em;text-transform:uppercase;}
+.hero-right{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;}
+.hero-illo-wrap{position:relative;width:100%;max-width:500px;}
+.hero-illo-wrap svg{width:100%;height:auto;}
+.float-card{position:absolute;background:var(--navy2);border:1px solid var(--border);border-radius:12px;padding:.9rem 1.2rem;backdrop-filter:blur(8px);box-shadow:0 8px 32px rgba(0,0,0,.3);animation:bob 4s ease-in-out infinite;}
+.float-card.fc1{bottom:10%;left:-5%;animation-delay:0s;}
+.float-card.fc2{top:8%;right:-5%;animation-delay:1.5s;}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.fc-label{font-size:.7rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
+.fc-val{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:700;color:var(--cyan);margin-top:.15rem;}
+.fc-dot{display:inline-block;width:7px;height:7px;background:#22c55e;border-radius:50%;margin-right:5px;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.4);}}
+
+/* SECTION */
+section{padding:6rem 6%;}
+.sec-tag{font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:.8rem;display:block;}
+.sec-title{font-family:'Outfit',sans-serif;font-weight:800;font-size:clamp(1.9rem,3vw,2.8rem);line-height:1.15;letter-spacing:-.025em;color:var(--white);}
+
+/* SERVICES */
+.services{background:var(--navy2);}
+.services-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:4rem;}
+.services-sub{font-size:.97rem;line-height:1.75;color:var(--muted);font-weight:300;margin-top:1rem;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border);}
+.svc-card{background:var(--navy2);padding:2.5rem 2rem;position:relative;overflow:hidden;cursor:default;transition:background .3s;}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--cyan);transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+.svc-card:hover{background:var(--navy3);}
+.svc-card:hover::after{transform:scaleX(1);}
+.svc-illo{margin-bottom:1.5rem;}
+.svc-name{font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:.6rem;}
+.svc-desc{font-size:.88rem;line-height:1.7;color:var(--muted);}
+
+/* PROCESS */
+.process{background:var(--navy);}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:4rem;position:relative;}
+.process-grid::before{content:'';position:absolute;top:2.4rem;left:12%;right:12%;height:1px;background:repeating-linear-gradient(90deg,var(--cyan) 0,var(--cyan) 8px,transparent 8px,transparent 18px);opacity:.3;}
+.proc-step{text-align:center;padding:0 1.2rem;}
+.proc-num{width:4.8rem;height:4.8rem;border-radius:50%;border:1.5px solid var(--blue2);display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:800;color:var(--cyan);margin:0 auto 1.5rem;background:var(--navy);position:relative;z-index:1;}
+.proc-title{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.6rem;}
+.proc-text{font-size:.85rem;line-height:1.7;color:var(--muted);}
+
+/* GALLERY */
+.projects{background:var(--navy2);}
+.projects-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem;}
+.projects-link{font-size:.82rem;color:var(--cyan);text-decoration:none;letter-spacing:.06em;display:flex;align-items:center;gap:.4rem;}
+.projects-link:hover{text-decoration:underline;}
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:260px 260px;gap:8px;}
+.gallery-item{border-radius:10px;overflow:hidden;position:relative;cursor:pointer;}
+.gallery-item:first-child{grid-row:span 2;}
+.gallery-img{width:100%;height:100%;object-fit:cover;transition:transform .55s ease;display:block;}
+.gallery-item:hover .gallery-img{transform:scale(1.07);}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,27,42,.82) 0%,transparent 55%);display:flex;align-items:flex-end;padding:1.2rem 1.4rem;opacity:0;transition:opacity .3s;}
+.gallery-item:hover .gallery-overlay{opacity:1;}
+.gallery-label{font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:700;color:#fff;}
+
+/* WHY */
+.why{background:var(--navy);}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.why-list{margin-top:2rem;}
+.why-item{display:flex;gap:1.2rem;margin-bottom:1.8rem;align-items:flex-start;}
+.why-icon-box{flex-shrink:0;width:2.8rem;height:2.8rem;background:rgba(76,201,240,.10);border:1px solid rgba(76,201,240,.2);border-radius:8px;display:flex;align-items:center;justify-content:center;}
+.why-item h4{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.3rem;color:var(--white);}
+.why-item p{font-size:.87rem;line-height:1.7;color:var(--muted);}
+.why-photo{position:relative;height:460px;}
+.wp-main{position:absolute;inset:0;border-radius:16px;overflow:hidden;}
+.wp-main img{width:100%;height:100%;object-fit:cover;}
+.wp-badge{position:absolute;bottom:-1rem;left:-1.5rem;background:var(--navy2);border:1px solid var(--border);border-radius:12px;padding:1rem 1.4rem;box-shadow:0 16px 40px rgba(0,0,0,.4);}
+.wp-badge .num{font-family:'Outfit',sans-serif;font-size:2.1rem;font-weight:800;color:var(--cyan);line-height:1;}
+.wp-badge .lbl{font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:.25rem;}
+.wp-small{position:absolute;top:1rem;right:-1.5rem;width:130px;height:130px;border-radius:12px;overflow:hidden;border:3px solid var(--navy);box-shadow:0 8px 24px rgba(0,0,0,.3);}
+.wp-small img{width:100%;height:100%;object-fit:cover;}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--navy2);}
+.testimonials .sec-title{margin-bottom:3rem;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.testi-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:2rem;transition:border-color .3s,transform .3s;}
+.testi-card:hover{border-color:rgba(76,201,240,.3);transform:translateY(-4px);}
+.testi-stars{color:var(--cyan);font-size:.8rem;letter-spacing:3px;margin-bottom:1rem;}
+.testi-text{font-size:.92rem;line-height:1.75;color:var(--muted);margin-bottom:1.5rem;font-style:italic;font-weight:300;}
+.testi-author{display:flex;align-items:center;gap:.9rem;}
+.testi-avatar{width:2.4rem;height:2.4rem;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:.85rem;font-weight:700;}
+.testi-name{font-size:.88rem;font-weight:500;}
+.testi-loc{font-size:.75rem;color:var(--muted);}
+
+/* CTA */
+.cta-band{background:linear-gradient(105deg,var(--blue) 0%,#0a4a8a 100%);padding:4.5rem 6%;display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem;position:relative;overflow:hidden;}
+.cta-band::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:28px 28px;}
+.cta-title{font-family:'Outfit',sans-serif;font-size:clamp(1.6rem,2.5vw,2.5rem);font-weight:800;color:#fff;line-height:1.15;position:relative;}
+.cta-sub{color:rgba(255,255,255,.7);margin-top:.6rem;font-size:1rem;font-weight:300;position:relative;}
+.btn-white-cta{background:#fff;color:var(--blue);padding:1rem 2.2rem;border-radius:8px;font-size:.95rem;font-weight:600;text-decoration:none;white-space:nowrap;transition:all .2s;position:relative;flex-shrink:0;font-family:'Outfit',sans-serif;}
+.btn-white-cta:hover{background:var(--cyan);color:var(--navy);transform:translateY(-2px);}
+
+/* CONTACT */
+.contact{background:var(--navy);}
+.contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:5rem;margin-top:3rem;}
+.contact-info h3{font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:700;color:var(--white);margin-bottom:1.5rem;}
+.c-line{display:flex;gap:1rem;margin-bottom:1.1rem;font-size:.9rem;color:var(--muted);align-items:flex-start;}
+.c-icon{font-size:1rem;flex-shrink:0;margin-top:.1rem;}
+.contact-form{display:flex;flex-direction:column;gap:1rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.fg{display:flex;flex-direction:column;gap:.4rem;}
+.fg label{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.fg input,.fg select,.fg textarea{background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:.85rem 1rem;font-size:.92rem;font-family:'Inter',sans-serif;color:var(--white);outline:none;transition:border-color .2s;}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.25);}
+.fg select option{background:var(--navy2);}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--cyan);}
+.fg textarea{resize:vertical;min-height:120px;}
+.btn-submit{background:var(--blue2);color:var(--white);border:none;cursor:pointer;padding:1rem 2.2rem;font-size:.92rem;font-weight:500;letter-spacing:.04em;border-radius:8px;align-self:flex-start;font-family:'Inter',sans-serif;transition:background .2s,transform .15s;}
+.btn-submit:hover{background:var(--cyan);color:var(--navy);transform:translateY(-2px);}
+
+/* FOOTER */
+footer{background:#080F17;color:rgba(255,255,255,.55);padding:4rem 6% 2rem;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.footer-brand .logo{margin-bottom:1rem;display:block;}
+.footer-brand p{font-size:.85rem;line-height:1.7;}
+.footer-col h5{font-family:'Outfit',sans-serif;color:#fff;font-size:.9rem;font-weight:700;margin-bottom:1.1rem;letter-spacing:.04em;}
+.footer-col ul{list-style:none;}
+.footer-col li{margin-bottom:.55rem;}
+.footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem;transition:color .2s;}
+.footer-col a:hover{color:var(--cyan);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;}
+
+/* MOBILE */
+@media(max-width:920px){
+  .hero{grid-template-columns:1fr;padding:7rem 5% 3rem;}
+  .hero-right{display:none;}
+  .services-header{grid-template-columns:1fr;gap:1rem;}
+  .services-grid{grid-template-columns:1fr;}
+  .process-grid{grid-template-columns:1fr 1fr;}
+  .process-grid::before{display:none;}
+  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+  .gallery-item:first-child{grid-row:span 1;}
+  .why-grid{grid-template-columns:1fr;}
+  .why-photo{display:none;}
+  .testi-grid{grid-template-columns:1fr;}
+  .cta-band{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+  .form-row{grid-template-columns:1fr;}
+  nav .nav-links{display:none;}
+}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#"><span>Antonio</span>, obrt za građevinske usluge</a>
+  <ul class="nav-links">
+    <li><a href="#usluge">Usluge</a></li>
+    <li><a href="#projekti">Projekti</a></li>
+    <li><a href="#o-nama">O nama</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <a href="#kontakt" class="nav-btn">Zatražite ponudu</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-dots"></div>
+  <div class="hero-bg-glow"></div>
+
+  <div class="hero-left">
+    <div class="hero-tag">Splitska i Šibenska regija · 20+ godina iskustva</div>
+    <h1>Vaš dom,<br><span class="accent">savršeno</span><br>uređen.</h1>
+    <p class="hero-desc">Profesionalne vodoinstalacije, adaptacije kupaonice i kuhinje, ugradnja pločica — sve pod jednim krovom. Brzo, uredno, s jamstvom kvalitete.</p>
+    <div class="hero-btns">
+      <a href="#kontakt" class="btn-primary">Besplatna procjena →</a>
+      <a href="#usluge" class="btn-ghost">Naše usluge</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">500+</div><div class="stat-lbl">Projekata</div></div>
+      <div><div class="stat-num">20+</div><div class="stat-lbl">God. iskustva</div></div>
+      <div><div class="stat-num">2h</div><div class="stat-lbl">Hitna reakcija</div></div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-illo-wrap">
+      <svg viewBox="0 0 480 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Vanity cabinet -->
+  <rect x="90" y="260" width="300" height="100" rx="8" stroke="rgba(76,201,240,.55)" stroke-width="1.5" fill="rgba(30,111,191,.07)"/>
+  <!-- Cabinet doors -->
+  <line x1="240" y1="264" x2="240" y2="356" stroke="rgba(76,201,240,.3)" stroke-width="1"/>
+  <circle cx="228" cy="310" r="4" stroke="rgba(76,201,240,.5)" stroke-width="1.2" fill="none"/>
+  <circle cx="252" cy="310" r="4" stroke="rgba(76,201,240,.5)" stroke-width="1.2" fill="none"/>
+  <!-- Sink basin -->
+  <ellipse cx="240" cy="261" rx="82" ry="20" stroke="rgba(76,201,240,.5)" stroke-width="1.5" fill="rgba(13,27,42,.7)"/>
+  <!-- Faucet body -->
+  <rect x="228" y="226" width="24" height="32" rx="4" stroke="rgba(76,201,240,.7)" stroke-width="1.5" fill="rgba(30,111,191,.15)"/>
+  <!-- Faucet spout arc -->
+  <path d="M240 226 Q240 206 272 206" stroke="rgba(76,201,240,.85)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <!-- Water drops -->
+  <ellipse cx="273" cy="215" rx="3.5" ry="5.5" fill="rgba(76,201,240,.65)"/>
+  <ellipse cx="278" cy="228" rx="2.5" ry="4" fill="rgba(76,201,240,.38)"/>
+  <ellipse cx="269" cy="231" rx="2" ry="3" fill="rgba(76,201,240,.25)"/>
+  <!-- Faucet handles -->
+  <rect x="208" y="236" width="16" height="6" rx="3" stroke="rgba(76,201,240,.6)" stroke-width="1.2" fill="rgba(30,111,191,.2)"/>
+  <rect x="256" y="236" width="16" height="6" rx="3" stroke="rgba(76,201,240,.6)" stroke-width="1.2" fill="rgba(30,111,191,.2)"/>
+  <!-- Mirror frame -->
+  <rect x="138" y="76" width="204" height="144" rx="6" stroke="rgba(76,201,240,.42)" stroke-width="1.5" fill="rgba(76,201,240,.04)"/>
+  <!-- Mirror sheen -->
+  <line x1="153" y1="90" x2="172" y2="210" stroke="rgba(255,255,255,.06)" stroke-width="16"/>
+  <!-- Drain pipe -->
+  <line x1="240" y1="280" x2="240" y2="358" stroke="rgba(76,201,240,.4)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="240" y1="358" x2="178" y2="358" stroke="rgba(76,201,240,.35)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="178" y1="358" x2="178" y2="380" stroke="rgba(76,201,240,.3)" stroke-width="3" stroke-linecap="round"/>
+  <!-- Big wrench right -->
+  <g transform="translate(362,128) rotate(32)">
+    <rect x="-4" y="-44" width="8" height="70" rx="3" stroke="rgba(76,201,240,.72)" stroke-width="1.5" fill="rgba(30,111,191,.15)"/>
+    <rect x="-11" y="-50" width="22" height="13" rx="4" stroke="rgba(76,201,240,.72)" stroke-width="1.5" fill="rgba(30,111,191,.18)"/>
+    <rect x="-11" y="20" width="22" height="13" rx="4" stroke="rgba(76,201,240,.72)" stroke-width="1.5" fill="rgba(30,111,191,.18)"/>
+  </g>
+  <!-- Small wrench left -->
+  <g transform="translate(104,152) rotate(-22)">
+    <rect x="-3" y="-32" width="6" height="52" rx="2.5" stroke="rgba(76,201,240,.5)" stroke-width="1.2" fill="rgba(30,111,191,.1)"/>
+    <rect x="-8" y="-37" width="16" height="10" rx="3" stroke="rgba(76,201,240,.5)" stroke-width="1.2" fill="rgba(30,111,191,.12)"/>
+    <rect x="-8" y="14" width="16" height="10" rx="3" stroke="rgba(76,201,240,.5)" stroke-width="1.2" fill="rgba(30,111,191,.12)"/>
+  </g>
+  <!-- Floor tiles grid -->
+  <line x1="88" y1="364" x2="392" y2="364" stroke="rgba(76,201,240,.2)" stroke-width="1"/>
+  <line x1="88" y1="392" x2="392" y2="392" stroke="rgba(76,201,240,.12)" stroke-width="1"/>
+  <line x1="88" y1="408" x2="392" y2="408" stroke="rgba(76,201,240,.07)" stroke-width="1"/>
+  <line x1="158" y1="364" x2="158" y2="414" stroke="rgba(76,201,240,.12)" stroke-width="1"/>
+  <line x1="240" y1="364" x2="240" y2="414" stroke="rgba(76,201,240,.12)" stroke-width="1"/>
+  <line x1="322" y1="364" x2="322" y2="414" stroke="rgba(76,201,240,.12)" stroke-width="1"/>
+  <!-- Decorative circles -->
+  <circle cx="372" cy="92" r="30" stroke="rgba(76,201,240,.18)" stroke-width="1" fill="none"/>
+  <circle cx="372" cy="92" r="20" stroke="rgba(76,201,240,.28)" stroke-width="1" fill="none"/>
+  <circle cx="372" cy="92" r="9" fill="rgba(76,201,240,.1)"/>
+  <circle cx="108" cy="92" r="22" stroke="rgba(76,201,240,.15)" stroke-width="1" fill="none"/>
+  <circle cx="108" cy="92" r="12" stroke="rgba(76,201,240,.22)" stroke-width="1" fill="none"/>
+  <!-- Wall tile accents -->
+  <rect x="90" y="90" width="30" height="30" rx="2" stroke="rgba(76,201,240,.14)" stroke-width="1" fill="none"/>
+  <rect x="90" y="126" width="30" height="30" rx="2" stroke="rgba(76,201,240,.1)" stroke-width="1" fill="none"/>
+  <rect x="360" y="218" width="28" height="28" rx="2" stroke="rgba(76,201,240,.14)" stroke-width="1" fill="none"/>
+  <rect x="360" y="252" width="28" height="28" rx="2" stroke="rgba(76,201,240,.1)" stroke-width="1" fill="none"/>
+  <rect x="90" y="218" width="28" height="28" rx="2" stroke="rgba(76,201,240,.14)" stroke-width="1" fill="none"/>
+  <rect x="90" y="252" width="28" height="28" rx="2" stroke="rgba(76,201,240,.1)" stroke-width="1" fill="none"/>
+  <!-- Dotted line decoration -->
+  <path d="M60 50 Q60 370 420 370" stroke="rgba(76,201,240,.08)" stroke-width="1" stroke-dasharray="4 8" fill="none"/>
+</svg>
+
+      <div class="float-card fc1">
+        <div class="fc-label"><span class="fc-dot"></span>Dostupni odmah</div>
+        <div class="fc-val">Hitne intervencije</div>
+      </div>
+      <div class="float-card fc2">
+        <div class="fc-label">Ocjena klijenata</div>
+        <div class="fc-val">★ 5.0 / 5.0</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="usluge">
+  <div class="services-header reveal">
+    <div>
+      <span class="sec-tag">Što radimo</span>
+      <h2 class="sec-title">Kompletna rješenja<br>za vaš prostor</h2>
+    </div>
+    <p class="services-sub">Od manjih popravaka do potpune adaptacije — naš tim brine o svakom detalju. Radimo brzo, uredno i s pisanim jamstvom.</p>
+  </div>
+  <div class="services-grid">
+    <div class="svc-card reveal">
+      <div class="svc-illo">
+        <svg width="60" height="60" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="30" stroke="rgba(76,201,240,.2)" stroke-width="1"/>
+          <path d="M32 12 Q32 28 46 28" stroke="rgba(76,201,240,.85)" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <circle cx="46" cy="28" r="4" stroke="rgba(76,201,240,.8)" stroke-width="1.5" fill="none"/>
+          <line x1="32" y1="36" x2="32" y2="52" stroke="rgba(76,201,240,.6)" stroke-width="2" stroke-linecap="round"/>
+          <line x1="24" y1="46" x2="40" y2="46" stroke="rgba(76,201,240,.5)" stroke-width="2" stroke-linecap="round"/>
+          <ellipse cx="32" cy="22" rx="2.5" ry="4" fill="rgba(76,201,240,.65)"/>
+        </svg>
+      </div>
+      <div class="svc-name">Vodoinstalacije</div>
+      <p class="svc-desc">Ugradnja, servis i popravak vodovodnih instalacija. Otklanjanje curenja, zamjena cijevi i rekonstrukcija sustava.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-illo">
+        <svg width="60" height="60" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="30" stroke="rgba(76,201,240,.2)" stroke-width="1"/>
+          <rect x="14" y="32" width="36" height="18" rx="3" stroke="rgba(76,201,240,.7)" stroke-width="1.5" fill="rgba(76,201,240,.05)"/>
+          <path d="M22 32 L22 22 Q22 15 28 15 L28 20" stroke="rgba(76,201,240,.85)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          <path d="M34 19 Q34 13 38 13 Q42 13 42 18 L42 24 L39 32" stroke="rgba(76,201,240,.65)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          <line x1="20" y1="50" x2="20" y2="56" stroke="rgba(76,201,240,.5)" stroke-width="2" stroke-linecap="round"/>
+          <line x1="44" y1="50" x2="44" y2="56" stroke="rgba(76,201,240,.5)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="svc-name">Adaptacija kupaonice</div>
+      <p class="svc-desc">Potpuna rekonstrukcija kupaonice — od idejnog rješenja do završnog detalja. Sanitariji, tuševi, kade, obloge.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-illo">
+        <svg width="60" height="60" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="30" stroke="rgba(76,201,240,.2)" stroke-width="1"/>
+          <rect x="12" y="36" width="40" height="16" rx="3" stroke="rgba(76,201,240,.7)" stroke-width="1.5" fill="rgba(76,201,240,.05)"/>
+          <rect x="12" y="28" width="40" height="8" rx="2" stroke="rgba(76,201,240,.5)" stroke-width="1.2" fill="rgba(76,201,240,.03)"/>
+          <circle cx="24" cy="22" r="5" stroke="rgba(76,201,240,.85)" stroke-width="1.5" fill="none"/>
+          <circle cx="40" cy="22" r="5" stroke="rgba(76,201,240,.6)" stroke-width="1.5" fill="none"/>
+          <line x1="20" y1="36" x2="20" y2="52" stroke="rgba(76,201,240,.35)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="44" y1="36" x2="44" y2="52" stroke="rgba(76,201,240,.35)" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="svc-name">Adaptacija kuhinje</div>
+      <p class="svc-desc">Preuređenje kuhinjskog prostora s fokusom na funkcionalnost. Priključci za uređaje, odvodi, sve instalacije.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-illo">
+        <svg width="60" height="60" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="30" stroke="rgba(76,201,240,.2)" stroke-width="1"/>
+          <rect x="14" y="14" width="16" height="16" rx="2" stroke="rgba(76,201,240,.85)" stroke-width="1.5" fill="rgba(76,201,240,.09)"/>
+          <rect x="34" y="14" width="16" height="16" rx="2" stroke="rgba(76,201,240,.6)" stroke-width="1.5" fill="rgba(76,201,240,.04)"/>
+          <rect x="14" y="34" width="16" height="16" rx="2" stroke="rgba(76,201,240,.6)" stroke-width="1.5" fill="rgba(76,201,240,.04)"/>
+          <rect x="34" y="34" width="16" height="16" rx="2" stroke="rgba(76,201,240,.9)" stroke-width="1.5" fill="rgba(76,201,240,.11)"/>
+          <line x1="14" y1="32" x2="50" y2="32" stroke="rgba(76,201,240,.22)" stroke-width="1"/>
+          <line x1="32" y1="14" x2="32" y2="50" stroke="rgba(76,201,240,.22)" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="svc-name">Ugradnja pločica</div>
+      <p class="svc-desc">Profesionalna ugradnja keramičkih, porculanskih i kamenih pločica — podne, zidne, terasne obloge.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-illo">
+        <svg width="60" height="60" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="30" stroke="rgba(76,201,240,.2)" stroke-width="1"/>
+          <circle cx="32" cy="32" r="16" stroke="rgba(76,201,240,.5)" stroke-width="1.2" fill="none"/>
+          <polyline points="32,20 32,32 40,38" stroke="rgba(76,201,240,.95)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="32" y1="10" x2="32" y2="14" stroke="rgba(76,201,240,.5)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="32" y1="50" x2="32" y2="54" stroke="rgba(76,201,240,.5)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="10" y1="32" x2="14" y2="32" stroke="rgba(76,201,240,.5)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="50" y1="32" x2="54" y2="32" stroke="rgba(76,201,240,.5)" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="svc-name">Hitne intervencije</div>
+      <p class="svc-desc">Dostupni 24/7 — puknuće cijevi, začepljenje, kvar bojlera. Dolazimo unutar 2 sata u Splitu i okolici.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-illo">
+        <svg width="60" height="60" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="30" stroke="rgba(76,201,240,.2)" stroke-width="1"/>
+          <rect x="14" y="18" width="30" height="24" rx="3" stroke="rgba(76,201,240,.7)" stroke-width="1.5" fill="rgba(76,201,240,.05)"/>
+          <line x1="19" y1="26" x2="38" y2="26" stroke="rgba(76,201,240,.55)" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="19" y1="31" x2="34" y2="31" stroke="rgba(76,201,240,.5)" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="19" y1="36" x2="30" y2="36" stroke="rgba(76,201,240,.45)" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M44 42 L50 50 L38 50 Z" stroke="rgba(76,201,240,.7)" stroke-width="1.5" fill="rgba(76,201,240,.07)" stroke-linejoin="round"/>
+          <line x1="44" y1="46" x2="44" y2="48" stroke="rgba(76,201,240,.9)" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="44" cy="44.5" r="0.8" fill="rgba(76,201,240,.9)"/>
+        </svg>
+      </div>
+      <div class="svc-name">Savjetovanje & projekti</div>
+      <p class="svc-desc">Besplatna procjena, izrada troškovnika i savjetovanje. Koordiniramo s arhitektima za besprijekoran rezultat.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div style="text-align:center;max-width:560px;margin:0 auto 1rem;" class="reveal">
+    <span class="sec-tag">Kako radimo</span>
+    <h2 class="sec-title">Jednostavan proces,<br>izvrsni rezultati</h2>
+  </div>
+  <div class="process-grid">
+    <div class="proc-step reveal">
+      <div class="proc-num">01</div>
+      <div class="proc-title">Kontakt & upit</div>
+      <p class="proc-text">Nazovite nas ili ispunite obrazac. Dogovorimo termin pregleda koji vama odgovara.</p>
+    </div>
+    <div class="proc-step reveal">
+      <div class="proc-num">02</div>
+      <div class="proc-title">Besplatna procjena</div>
+      <p class="proc-text">Dolazimo na uvid i izrađujemo detaljan troškovnik. Transparentno, bez skrivenih troškova.</p>
+    </div>
+    <div class="proc-step reveal">
+      <div class="proc-num">03</div>
+      <div class="proc-title">Izvedba radova</div>
+      <p class="proc-text">Radimo stručno i uredno uz poštivanje rokova. Minimalno ometanje vašeg svakodnevnog života.</p>
+    </div>
+    <div class="proc-step reveal">
+      <div class="proc-num">04</div>
+      <div class="proc-title">Predaja & jamstvo</div>
+      <p class="proc-text">Predajemo gotov prostor s pisanim jamstvom. Servisna dostupnost i nakon završetka.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projekti">
+  <div class="projects-header reveal">
+    <div>
+      <span class="sec-tag">Naši radovi</span>
+      <h2 class="sec-title">Odabrani projekti</h2>
+    </div>
+    <a href="#kontakt" class="projects-link">Zatražite sličan projekt →</a>
+  </div>
+  <div class="gallery">
+    <div class="gallery-item reveal">
+      <img class="gallery-img" src="img/kupaonica.jpg" alt="Adaptacija kupaonice"/>
+      <div class="gallery-overlay"><span class="gallery-label">Kompletna adaptacija kupaonice · Split</span></div>
+    </div>
+    <div class="gallery-item reveal">
+      <img class="gallery-img" src="img/kuhinja.png" alt="Kuhinja"/>
+      <div class="gallery-overlay"><span class="gallery-label">Adaptacija kuhinje · Solin</span></div>
+    </div>
+    <div class="gallery-item reveal">
+      <img class="gallery-img" src="img/plocice.png" alt="Pločice"/>
+      <div class="gallery-overlay"><span class="gallery-label">Ugradnja pločica · Kaštela</span></div>
+    </div>
+    <div class="gallery-item reveal">
+      <img class="gallery-img" src="img/vodoinstalacije.png" alt="Vodoinstalacije"/>
+      <div class="gallery-overlay"><span class="gallery-label">Vodoinstalacije · Trogir</span></div>
+    </div>
+    <div class="gallery-item reveal">
+      <img class="gallery-img" src="img/prostor.png" alt="Obnova"/>
+      <div class="gallery-overlay"><span class="gallery-label">Kompletna obnova · Rogoznica</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="o-nama">
+  <div class="why-grid">
+    <div>
+      <span class="sec-tag">Zašto mi</span>
+      <h2 class="sec-title reveal">Kvaliteta koja<br>govori sama za sebe</h2>
+      <p style="color:var(--muted);font-size:.97rem;line-height:1.75;margin-top:1rem;font-weight:300;" class="reveal">Osnovani smo s jednim ciljem — pružati vrhunsku uslugu uz pošten odnos prema klijentima. Svaki projekt tretiramo kao da radimo u vlastitom domu.</p>
+      <div class="why-list">
+        <div class="why-item reveal">
+          <div class="why-icon-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(76,201,240,.9)" stroke-width="2" stroke-linecap="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></div>
+          <div><h4>Certificirani stručnjaci</h4><p>Više od 20 godina prakse u vodoinstalaterskim radovima i postavljanju pločica na Dalmatinskoj obali.</p></div>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-icon-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(76,201,240,.9)" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div><h4>Transparentan troškovnik</h4><p>Jasan i detaljan troškovnik bez skrivenih troškova. Znate točno što plaćate i zašto.</p></div>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-icon-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(76,201,240,.9)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div><h4>Poštivanje rokova</h4><p>Završavamo radove prema dogovoru. Ako nastane kašnjenje, odmah vas obavještavamo.</p></div>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-icon-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(76,201,240,.9)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div><h4>Pisano jamstvo na radove</h4><p>Jamstvo na sve izvedene radove. Ako nešto nije kako treba — dolazimo i rješavamo bez dodatnih troškova.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="why-photo reveal">
+      <div class="wp-main"><img src="img/kupaonica2.jpg" alt="Moderna kupaonica"/></div>
+      <div class="wp-badge"><div class="num">500+</div><div class="lbl">Zadovoljnih klijenata</div></div>
+      <!-- <div class="wp-small"><img src="img/kuhinja.png" alt="Kuhinja"/></div> -->
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <span class="sec-tag">Recenzije</span>
+  <h2 class="sec-title reveal">Što kažu naši klijenti</h2>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Odrađena kompletna adaptacija kupaonice za 10 dana. Savršeno poravnate pločice, sve uredno i prema dogovoru. Vrhunska usluga!"</p>
+      <div class="testi-author"><div class="testi-avatar">MK</div><div><div class="testi-name">Maja Kovačević</div><div class="testi-loc">Split</div></div></div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Puknula cijev u kuhinji — stigli za sat vremena i riješili sve. Profesionalno, brzo i iznimno pošteno prema cijeni. Preporučujem svima!"</p>
+      <div class="testi-author"><div class="testi-avatar">TP</div><div><div class="testi-name">Tomislav Perić</div><div class="testi-loc">Solin</div></div></div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Kuhinja i kupaonica paralelno — besprijekorna koordinacija. Rezultat je iznad svih očekivanja. Definitivno ću  ponovo zvati."</p>
+      <div class="testi-author"><div class="testi-avatar">AJ</div><div><div class="testi-name">Ana Jurić</div><div class="testi-loc">Kaštela</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <div>
+    <div class="cta-title">Spremi za vaš projekt?<br>Počnimo danas.</div>
+    <div class="cta-sub">Besplatna procjena bez obveze — odgovaramo u roku od 2 sata.</div>
+  </div>
+  <a href="#kontakt" class="btn-white-cta">Zatražite besplatnu procjenu →</a>
+</div>
+
+<!-- CONTACT -->
+<section class="contact" id="kontakt">
+  <span class="sec-tag">Kontakt</span>
+  <h2 class="sec-title reveal">Javite nam se</h2>
+  <div class="contact-grid">
+    <div class="reveal">
+      <h3>Antonio, obrt za građevinske usluge</h3><br>
+      <div class="c-line"><span class="material-symbols-outlined">call</span><span>+385 92 1487 193</span></div>
+      <div class="c-line"><span class="material-symbols-outlined">mail</span><span>antonio.voda.pro@gmail.com</span></div>
+      <div class="c-line"><span class="material-symbols-outlined">schedule</span><span>Pon – Pet: 7:00 – 18:00<br>Subota: 8:00 – 14:00</span></div>
+      <div style="margin-top:2rem;padding:1.5rem;background:var(--navy2);border:1px solid var(--border);border-radius:12px;">
+        <div style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem;">Područje rada</div>
+        <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+          <span style="background:rgba(76,201,240,.10);border:1px solid rgba(76,201,240,.2);padding:.3rem .8rem;border-radius:20px;font-size:.8rem;color:var(--cyan);">Split</span>
+          <span style="background:rgba(76,201,240,.10);border:1px solid rgba(76,201,240,.2);padding:.3rem .8rem;border-radius:20px;font-size:.8rem;color:var(--cyan);">Solin</span>
+          <span style="background:rgba(76,201,240,.10);border:1px solid rgba(76,201,240,.2);padding:.3rem .8rem;border-radius:20px;font-size:.8rem;color:var(--cyan);">Kaštela</span>
+          <span style="background:rgba(76,201,240,.10);border:1px solid rgba(76,201,240,.2);padding:.3rem .8rem;border-radius:20px;font-size:.8rem;color:var(--cyan);">Trogir</span>
+          <span style="background:rgba(76,201,240,.10);border:1px solid rgba(76,201,240,.2);padding:.3rem .8rem;border-radius:20px;font-size:.8rem;color:var(--cyan);">Šibenik</span>
+          <span style="background:rgba(76,201,240,.10);border:1px solid rgba(76,201,240,.2);padding:.3rem .8rem;border-radius:20px;font-size:.8rem;color:var(--cyan);">Ostalo</span>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="fg"><label for="ime">Ime i prezime</label><input type="text" id="ime" placeholder="Pero Perić" required></div>
+        <div class="fg"><label for="tel">Telefon</label><input type="tel" id="tel" placeholder="+385 91 ..."></div>
+      </div>
+      <div class="fg"><label for="email">E-mail</label><input type="email" id="email" placeholder="pero@email.hr" required></div>
+      <div class="fg">
+        <label for="usluga">Vrsta usluge</label>
+        <select id="usluga">
+          <option value="">— Odaberite uslugu —</option>
+          <option>Vodoinstalacije</option>
+          <option>Adaptacija kupaonice</option>
+          <option>Adaptacija kuhinje</option>
+          <option>Ugradnja pločica</option>
+          <option>Hitna intervencija</option>
+          <option>Ostalo</option>
+        </select>
+      </div>
+      <div class="fg"><label for="poruka">Poruka</label><textarea id="poruka" placeholder="Opišite vaš projekt ili kvar..."></textarea></div>
+      <button type="submit" class="btn-submit">Pošalji upit →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a class="logo" href="#"><span>Antonio</span>, obrt za građevinske usluge</a>
+      <p>Pouzdani partner za vodoinstalacije, adaptacije i pločičarske radove u splitskoj regiji i Dalmaciji.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Usluge</h5>
+      <ul>
+        <li><a href="#usluge">Vodoinstalacije</a></li>
+        <li><a href="#usluge">Adaptacija kupaonice</a></li>
+        <li><a href="#usluge">Adaptacija kuhinje</a></li>
+        <li><a href="#usluge">Ugradnja pločica</a></li>
+        <li><a href="#usluge">Hitne intervencije</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Tvrtka</h5>
+      <ul>
+        <li><a href="#o-nama">O nama</a></li>
+        <li><a href="#projekti">Naši radovi</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Regija</h5>
+      <ul>
+        <li><a href="#">Split</a></li>
+        <li><a href="#">Solin</a></li>
+        <li><a href="#">Kaštela</a></li>
+        <li><a href="#">Trogir</a></li>
+        <li><a href="#">Šibenik</a></li>
+        <li><a href="#">Ostalo</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Antonio, obrt za građevinske usluge. Sva prava pridržana.</span>
+    <span>OIB: 90496436488</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+emailjs.init('Cj1KNm7qZjC1kzO_-');
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){en.target.classList.add('in');obs.unobserve(en.target);}
+  });
+},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.querySelectorAll('.services-grid .svc-card,.testi-grid .testi-card,.process-grid .proc-step').forEach((el,i)=>{
+  el.style.transitionDelay=(i*70)+'ms';
+});
+function handleSubmit(e){
+  e.preventDefault();
+  emailjs.send('service_q4cgy5b', 'template_imlzbgr', {
+    from_name: document.getElementById('ime').value,
+    from_email: document.getElementById('email').value,
+    phone: document.getElementById('tel').value,
+    service: document.getElementById('usluga').value,
+    message: document.getElementById('poruka').value,
+    _subject: 'Upit: ' + document.getElementById('usluga').value,
+  })
+  .then(() => {
+    const btn = e.target.querySelector('.btn-submit');
+    btn.textContent = '✓ Upit poslan! Javljamo se uskoro.';
+    btn.style.background = '#16a34a';
+    btn.disabled = true;
+  });
+}
+</script>
+</body>
+</html>
