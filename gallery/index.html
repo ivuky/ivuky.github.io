@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery – Lagoonica</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:    #F4F6F8;
+  --bg2:   #EAEDF1;
+  --teal:  #0E7490;
+  --teal2: #0891B2;
+  --dark:  #1C2331;
+  --muted: rgba(28,35,49,0.52);
+  --border:rgba(14,116,144,0.18);
+  --white: #FFFFFF;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--dark);overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 6%;background:var(--white);
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:100;
+}
+.logo{font-family:'Outfit',sans-serif;font-weight:400;font-size:1.3rem;color:var(--dark);text-decoration:none;}
+.logo span{color:var(--teal);}
+.nav-back{
+  font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--teal);text-decoration:none;
+  display:flex;align-items:center;gap:.4rem;
+  transition:gap .2s;
+}
+.nav-back:hover{gap:.7rem;}
+
+/* ── HERO ── */
+.gallery-hero{
+  padding:4rem 6% 3rem;text-align:center;
+  background:var(--bg);position:relative;overflow:hidden;
+}
+.gallery-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(rgba(14,116,144,.07) 1px,transparent 1px);
+  background-size:28px 28px;pointer-events:none;
+}
+.gallery-eyebrow{
+  font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:.8rem;display:block;
+}
+.gallery-title{
+  font-family:'Outfit',sans-serif;font-weight:800;
+  font-size:clamp(2.2rem,5vw,4rem);
+  color:var(--dark);letter-spacing:-.025em;line-height:1.1;margin-bottom:1rem;
+}
+.gallery-title span{color:var(--teal);}
+.gallery-sub{font-size:.95rem;color:var(--muted);font-weight:300;max-width:480px;margin:0 auto 2.5rem;}
+
+/* ── FILTER TREE ── */
+.filter-tree{
+  padding:0 6% 3rem;
+  max-width:1200px;margin:0 auto;
+}
+.filter-row{
+  display:flex;align-items:flex-start;gap:1.5rem;
+  margin-bottom:1rem;flex-wrap:wrap;
+}
+.filter-row + .filter-row{
+  padding-left:1.5rem;
+  border-left:2px solid var(--border);
+  margin-left:.3rem;
+}
+.filter-group-label{
+  font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);padding:.45rem 0;white-space:nowrap;
+  min-width:80px;
+}
+.filter-btns{display:flex;gap:.5rem;flex-wrap:wrap;}
+.filter-btn{
+  font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+  padding:.45rem 1.1rem;border:1px solid var(--border);
+  background:transparent;color:var(--muted);cursor:pointer;
+  border-radius:20px;transition:all .2s;font-family:'Inter',sans-serif;
+}
+.filter-btn:hover{border-color:var(--teal);color:var(--teal);}
+.filter-btn.active{background:var(--teal);color:#fff;border-color:var(--teal);}
+.filter-btn.parent-active{background:rgba(14,116,144,.1);color:var(--teal);border-color:var(--teal);}
+
+/* ── MASONRY GRID ── */
+.masonry{
+  columns:3;column-gap:12px;
+  padding:0 6% 6rem;
+  max-width:1200px;margin:0 auto;
+}
+.masonry-item{
+  break-inside:avoid;margin-bottom:12px;
+  position:relative;overflow:hidden;
+  cursor:pointer;border-radius:12px;
+}
+.masonry-item img{width:100%;display:block;transition:transform .5s ease;}
+.masonry-item:hover img{transform:scale(1.05);}
+.masonry-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(28,35,49,.75) 0%,transparent 50%);
+  opacity:0;transition:opacity .3s;
+  display:flex;align-items:flex-end;padding:1.2rem;border-radius:12px;
+}
+.masonry-item:hover .masonry-overlay{opacity:1;}
+.masonry-label{font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:600;color:#fff;}
+.masonry-tag{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);display:block;margin-bottom:.2rem;}
+
+/* ── EMPTY STATE ── */
+.empty-state{
+  text-align:center;padding:5rem 2rem;
+  color:var(--muted);font-size:.95rem;
+  display:none;
+}
+.empty-state.show{display:block;}
+
+/* ── LIGHTBOX ── */
+.lightbox{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(28,35,49,.92);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .3s;
+  backdrop-filter:blur(8px);
+}
+.lightbox.open{opacity:1;pointer-events:all;}
+.lb-inner{position:relative;max-width:90vw;max-height:90vh;display:flex;align-items:center;gap:1rem;}
+.lb-img-wrap{max-width:80vw;max-height:85vh;border-radius:12px;overflow:hidden;position:relative;}
+.lb-img-wrap img{max-width:80vw;max-height:85vh;object-fit:contain;display:block;border-radius:12px;}
+.lb-info{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(28,35,49,.88) 0%,transparent 100%);
+  padding:2rem 1.5rem 1.2rem;border-radius:0 0 12px 12px;
+}
+.lb-info-tag{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal2);margin-bottom:.25rem;display:block;}
+.lb-info-name{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:700;color:#fff;}
+.lb-btn{
+  width:3rem;height:3rem;border-radius:50%;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  color:#fff;font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s;flex-shrink:0;
+}
+.lb-btn:hover{background:var(--teal);}
+.lb-close{
+  position:absolute;top:-3rem;right:0;
+  width:2.4rem;height:2.4rem;border-radius:50%;
+  background:rgba(255,255,255,.15);border:none;
+  color:#fff;font-size:1.1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s;
+}
+.lb-close:hover{background:var(--teal);}
+.lb-counter{
+  position:absolute;top:-2.8rem;left:50%;transform:translateX(-50%);
+  font-size:.75rem;letter-spacing:.1em;color:rgba(255,255,255,.6);
+  text-transform:uppercase;white-space:nowrap;
+}
+
+/* ── CTA ── */
+.gallery-cta{
+  text-align:center;padding:4rem 6%;
+  background:var(--bg2);border-top:1px solid var(--border);
+}
+.gallery-cta h2{
+  font-family:'Outfit',sans-serif;font-weight:800;
+  font-size:clamp(1.6rem,3vw,2.4rem);color:var(--dark);
+  margin-bottom:.7rem;letter-spacing:-.02em;
+}
+.gallery-cta p{font-size:.95rem;color:var(--muted);font-weight:300;margin-bottom:2rem;}
+.btn-teal{
+  background:var(--teal);color:#fff;padding:.9rem 2.2rem;border-radius:8px;
+  font-size:.88rem;font-weight:500;text-decoration:none;
+  letter-spacing:.06em;text-transform:uppercase;
+  transition:background .2s,transform .15s;display:inline-block;
+}
+.btn-teal:hover{background:var(--teal2);transform:translateY(-2px);}
+
+/* ── FOOTER ── */
+.gallery-footer{
+  background:var(--dark);color:rgba(255,255,255,.45);
+  padding:1.5rem 6%;display:flex;
+  justify-content:space-between;align-items:center;
+  font-size:.78rem;flex-wrap:wrap;gap:.5rem;
+}
+.gallery-footer a{color:var(--teal2);text-decoration:none;}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  .masonry{columns:2;}
+  .lb-btn{display:none;}
+  .filter-row{gap:.8rem;}
+  .filter-group-label{min-width:auto;}
+}
+@media(max-width:480px){
+  .masonry{columns:1;}
+  .filter-row + .filter-row{padding-left:.8rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="index.html"><span>Lagoonica</span></a>
+  <a class="nav-back" href="index.html">← Back to home</a>
+</nav>
+
+<!-- HERO -->
+<div class="gallery-hero">
+  <span class="gallery-eyebrow">Dalmatian Coast · First Row by the Sea</span>
+  <h1 class="gallery-title">Our <span>gallery</span></h1>
+  <p class="gallery-sub">Take a look inside — the balcony, the sea, the sunsets and all the details that make your stay unforgettable.</p>
+</div>
+
+<!-- FILTER TREE -->
+<div class="filter-tree">
+
+  <!-- Row 1: All + top level -->
+  <div class="filter-row">
+    <div class="filter-group-label">Browse</div>
+    <div class="filter-btns">
+      <button class="filter-btn active" onclick="filter('all', this)">All</button>
+    </div>
+  </div>
+
+  <!-- Row 2: Outdoor parent + children -->
+  <div class="filter-row">
+    <div class="filter-group-label">Outdoor</div>
+    <div class="filter-btns">
+      <button class="filter-btn" onclick="filter('outdoor', this)">All Outdoor</button>
+      <button class="filter-btn" onclick="filter('balcony', this)">Balcony & Views</button>
+      <button class="filter-btn" onclick="filter('garden', this)">House & Garden</button>
+    </div>
+  </div>
+
+  <!-- Row 3: Interior parent + children -->
+  <div class="filter-row">
+    <div class="filter-group-label">Interior</div>
+    <div class="filter-btns">
+      <button class="filter-btn" onclick="filter('interior', this)">All Interior</button>
+      <button class="filter-btn" onclick="filter('apt1', this)">Apartment 1</button>
+      <button class="filter-btn" onclick="filter('apt2', this)">Apartment 2</button>
+    </div>
+  </div>
+
+  <!-- Row 4: Standalone categories -->
+  <div class="filter-row">
+    <div class="filter-group-label">More</div>
+    <div class="filter-btns">
+      <button class="filter-btn" onclick="filter('beach', this)">Beach & Sea</button>
+      <button class="filter-btn" onclick="filter('sunsets', this)">Sunsets</button>
+      <button class="filter-btn" onclick="filter('views', this)">Views</button>
+      <button class="filter-btn" onclick="filter('food', this)">Food & Beverages</button>
+      <button class="filter-btn" onclick="filter('misc', this)">Miscellaneous</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- MASONRY GALLERY -->
+<div class="masonry" id="gallery">
+
+  <!-- BALCONY & VIEWS -->
+  <div class="masonry-item" data-cat="balcony outdoor" data-label="Balcony · Open sea view" data-tag="Balcony & Views" onclick="openLightbox(this)">
+    <img src="img/outdoor/balcony/1.jpg" alt="Balcony sea view"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Balcony & Views</span><span class="masonry-label">Balcony · Open sea view</span></div></div>
+  </div>
+
+  <div class="masonry-item" data-cat="balcony outdoor" data-label="Morning coffee on the balcony" data-tag="Balcony & Views" onclick="openLightbox(this)">
+    <img src="img/outdoor/balcony/2.jpg" alt="Morning on balcony"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Balcony & Views</span><span class="masonry-label">Morning coffee on the balcony</span></div></div>
+  </div>
+
+  <!-- HOUSE & GARDEN -->
+  <div class="masonry-item" data-cat="garden outdoor" data-label="Garden terrace" data-tag="House & Garden" onclick="openLightbox(this)">
+    <img src="img/outdoor/garden/1.jpg" alt="Garden terrace"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">House & Garden</span><span class="masonry-label">Garden terrace</span></div></div>
+  </div>
+
+  <div class="masonry-item" data-cat="garden outdoor" data-label="House · First row by the sea" data-tag="House & Garden" onclick="openLightbox(this)">
+    <img src="img/outdoor/garden/2.jpg" alt="House exterior"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">House & Garden</span><span class="masonry-label">House · First row by the sea</span></div></div>
+  </div>
+
+  <!-- APARTMENT 1 -->
+  <div class="masonry-item" data-cat="apt1 interior" data-label="Apartment 1 · Living room" data-tag="Apartment 1" onclick="openLightbox(this)">
+    <img src="img/interior/apt1/1.jpg" alt="Apartment 1 living room"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Apartment 1</span><span class="masonry-label">Apartment 1 · Living room</span></div></div>
+  </div>
+
+  <div class="masonry-item" data-cat="apt1 interior" data-label="Apartment 1 · Bedroom" data-tag="Apartment 1" onclick="openLightbox(this)">
+    <img src="img/interior/apt1/2.jpg" alt="Apartment 1 bedroom"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Apartment 1</span><span class="masonry-label">Apartment 1 · Bedroom</span></div></div>
+  </div>
+
+  <div class="masonry-item" data-cat="apt1 interior" data-label="Apartment 1 · Kitchen" data-tag="Apartment 1" onclick="openLightbox(this)">
+    <img src="img/interior/apt1/3.jpg" alt="Apartment 1 kitchen"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Apartment 1</span><span class="masonry-label">Apartment 1 · Kitchen</span></div></div>
+  </div>
+
+  <!-- APARTMENT 2 -->
+  <div class="masonry-item" data-cat="apt2 interior" data-label="Apartment 2 · Living room" data-tag="Apartment 2" onclick="openLightbox(this)">
+    <img src="img/interior/apt2/1.jpg" alt="Apartment 2 living room"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Apartment 2</span><span class="masonry-label">Apartment 2 · Living room</span></div></div>
+  </div>
+
+  <div class="masonry-item" data-cat="apt2 interior" data-label="Apartment 2 · Bedroom" data-tag="Apartment 2" onclick="openLightbox(this)">
+    <img src="img/interior/apt2/2.jpg" alt="Apartment 2 bedroom"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Apartment 2</span><span class="masonry-label">Apartment 2 · Bedroom</span></div></div>
+  </div>
+
+  <!-- BEACH & SEA -->
+  <div class="masonry-item" data-cat="beach" data-label="The beach · 20 steps away" data-tag="Beach & Sea" onclick="openLightbox(this)">
+    <img src="img/beach/1.jpeg" alt="Crystal clear · You can count the pebbles"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Beach & Sea</span><span class="masonry-label">Crystal clear · You can count the pebbles</span></div></div>
+  </div>
+
+  <div class="masonry-item" data-cat="beach" data-label="Crystal clear water" data-tag="Beach & Sea" onclick="openLightbox(this)">
+    <img src="img/beach/3.jpg" alt="The bay · Still, clear and all yours"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Beach & Sea</span><span class="masonry-label">The bay · Still, clear and all yours</span></div></div>
+  </div>
+
+  <div class="masonry-item" data-cat="beach" data-label="Crystal clear water" data-tag="Beach & Sea" onclick="openLightbox(this)">
+    <img src="img/beach/4.jpg" alt="Our beach · Warm pebbles, cool water"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Beach & Sea</span><span class="masonry-label">Our beach · Warm pebbles, cool water</span></div></div>
+  </div>
+
+  <div class="masonry-item" data-cat="beach" data-label="Crystal clear water" data-tag="Beach & Sea" onclick="openLightbox(this)">
+    <img src="img/beach/5.jpg" alt="Stone terrace · Shade and silence"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Beach & Sea</span><span class="masonry-label">Stone terrace · Shade and silence</span></div></div>
+  </div>
+
+  <div class="masonry-item" data-cat="beach" data-label="Crystal clear water" data-tag="Beach & Sea" onclick="openLightbox(this)">
+    <img src="img/beach/8.jpg" alt="Kayaking · Explore the coastline"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Beach & Sea</span><span class="masonry-label">Kayaking · Explore the coastline</span></div></div>
+  </div>
+
+  <!-- SUNSETS -->
+  <div class="masonry-item" data-cat="sunsets" data-label="Sunset · From the balcony" data-tag="Sunsets" onclick="openLightbox(this)">
+    <img src="img/sunsets/1.jpeg" alt="Sunset from balcony"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Sunsets</span><span class="masonry-label">Sunset · From the balcony</span></div></div>
+  </div>
+
+  <div class="masonry-item" data-cat="sunsets" data-label="Golden hour over the Adriatic" data-tag="Sunsets" onclick="openLightbox(this)">
+    <img src="img/sunsets/2.jpg" alt="Golden hour sunset"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Sunsets</span><span class="masonry-label">Golden hour over the Adriatic</span></div></div>
+  </div>
+
+  <div class="masonry-item" data-cat="sunsets" data-label="Golden hour over the Adriatic" data-tag="Sunsets" onclick="openLightbox(this)">
+    <img src="img/sunsets/3.jpg" alt="The best seat in the house"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Sunsets</span><span class="masonry-label">Pets love it too</span></div></div>
+  </div>
+
+  <!-- VIEWS -->
+  <div class="masonry-item" data-cat="views" data-label="Panoramic view · Open sea" data-tag="Views" onclick="openLightbox(this)">
+    <img src="img/views/2.jpg" alt="Panoramic sea view"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Views</span><span class="masonry-label">Panoramic view · Open sea</span></div></div>
+  </div>
+
+  <div class="masonry-item" data-cat="views" data-label="Islands on the horizon" data-tag="Views" onclick="openLightbox(this)">
+    <img src="img/views/1.jpeg" alt="Islands view"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Views</span><span class="masonry-label">Islands on the horizon</span></div></div>
+  </div>
+
+  <!-- FOOD & BEVERAGES -->
+  <div class="masonry-item" data-cat="food" data-label="Welcome drinks" data-tag="Food & Beverages" onclick="openLightbox(this)">
+    <img src="img/food/1.jpg" alt="Welcome drinks"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Food & Beverages</span><span class="masonry-label">Welcome drinks</span></div></div>
+  </div>
+
+  <div class="masonry-item" data-cat="food" data-label="Welcome drinks" data-tag="Food & Beverages" onclick="openLightbox(this)">
+    <img src="img/food/2.jpg" alt="Under the bell · Slow cooked perfection"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Food & Beverages</span><span class="masonry-label">Under the bell · Slow cooked perfection</span></div></div>
+  </div>
+
+  <div class="masonry-item" data-cat="food" data-label="Welcome drinks" data-tag="Food & Beverages" onclick="openLightbox(this)">
+    <img src="img/food/3.jpg" alt="Local food"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Food & Beverages</span><span class="masonry-label">Local food</span></div></div>
+  </div>
+
+  <div class="masonry-item" data-cat="food" data-label="Welcome drinks" data-tag="Food & Beverages" onclick="openLightbox(this)">
+    <img src="img/food/4.jpg" alt="Muraena on the spit · Local tradition"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Food & Beverages</span><span class="masonry-label">Muraena on the spit · Local tradition</span></div></div>
+  </div>
+
+  <div class="masonry-item" data-cat="food" data-label="Welcome drinks" data-tag="Food & Beverages" onclick="openLightbox(this)">
+    <img src="img/food/5.jpg" alt="Octopus peka · Dalmatian classic"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Food & Beverages</span><span class="masonry-label">Octopus peka · Dalmatian classic</span></div></div>
+  </div>
+
+  <div class="masonry-item" data-cat="food" data-label="Welcome drinks" data-tag="Food & Beverages" onclick="openLightbox(this)">
+    <img src="img/food/6.jpg" alt="Local wine · Best enjoyed by the sea"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Food & Beverages</span><span class="masonry-label">Local wine · Best enjoyed by the sea</span></div></div>
+  </div>
+
+  <!-- MISCELLANEOUS -->
+  <div class="masonry-item" data-cat="misc" data-label="Local area" data-tag="Miscellaneous" onclick="openLightbox(this)">
+    <img src="img/misc/1.jpg" alt="Local area"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Miscellaneous</span><span class="masonry-label">Local area</span></div></div>
+  </div>
+
+  <div class="masonry-item" data-cat="misc" data-label="Local area" data-tag="Miscellaneous" onclick="openLightbox(this)">
+    <img src="img/misc/2.jpeg" alt="Ready for takeoff · Our local seagull"/>
+    <div class="masonry-overlay"><div><span class="masonry-tag">Miscellaneous</span><span class="masonry-label">Ready for takeoff · Our local seagull</span></div></div>
+  </div>
+
+</div>
+
+<!-- EMPTY STATE -->
+<div class="empty-state" id="empty-state">No photos in this category yet.</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+  <div class="lb-inner">
+    <button class="lb-btn" onclick="prevImage()">&#8592;</button>
+    <div class="lb-img-wrap">
+      <button class="lb-close" onclick="closeLightbox()">&#10005;</button>
+      <span class="lb-counter" id="lb-counter">1 / 1</span>
+      <img id="lb-img" src="" alt=""/>
+      <div class="lb-info">
+        <span class="lb-info-tag" id="lb-tag"></span>
+        <span class="lb-info-name" id="lb-name"></span>
+      </div>
+    </div>
+    <button class="lb-btn" onclick="nextImage()">&#8594;</button>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="gallery-cta">
+  <h2>Like what you see?</h2>
+  <p>Your sea view is waiting — check availability and book directly with the owners.</p>
+  <a href="index.html#kontakt" class="btn-teal">Check availability</a>
+</div>
+
+<!-- FOOTER -->
+<div class="gallery-footer">
+  <span>© 2025 Lagoonica. All rights reserved.</span>
+  <span>Elegance by the Sea</span>
+</div>
+
+<script>
+const allItems = Array.from(document.querySelectorAll('.masonry-item'));
+let currentIndex = 0;
+let activeItems = allItems;
+
+// ── FILTER ──
+// Each item has data-cat with space-separated tags e.g. "balcony outdoor"
+// Parent filters (outdoor, interior) match any item whose cat includes their key
+const parentMap = {
+  outdoor:  ['balcony','garden'],
+  interior: ['apt1','apt2']
+};
+
+function filter(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active','parent-active'));
+  btn.classList.add('active');
+
+  allItems.forEach(item => {
+    const cats = item.dataset.cat.split(' ');
+    let show = false;
+    if (cat === 'all') {
+      show = true;
+    } else if (parentMap[cat]) {
+      show = parentMap[cat].some(c => cats.includes(c));
+    } else {
+      show = cats.includes(cat);
+    }
+    item.style.display = show ? '' : 'none';
+  });
+
+  // Empty state
+  const visible = allItems.filter(i => i.style.display !== 'none');
+  document.getElementById('empty-state').classList.toggle('show', visible.length === 0);
+  activeItems = visible;
+}
+
+// ── LIGHTBOX ──
+function getVisible() {
+  return allItems.filter(i => i.style.display !== 'none');
+}
+
+function openLightbox(el) {
+  activeItems = getVisible();
+  currentIndex = activeItems.indexOf(el);
+  if (currentIndex === -1) currentIndex = 0;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeLightboxOutside(e) {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+}
+
+function updateLightbox() {
+  activeItems = getVisible();
+  const item = activeItems[currentIndex];
+  if (!item) return;
+  document.getElementById('lb-img').src = item.querySelector('img').src;
+  document.getElementById('lb-img').alt = item.querySelector('img').alt;
+  document.getElementById('lb-tag').textContent = item.dataset.tag;
+  document.getElementById('lb-name').textContent = item.dataset.label;
+  document.getElementById('lb-counter').textContent = (currentIndex + 1) + ' / ' + activeItems.length;
+}
+
+function nextImage() {
+  activeItems = getVisible();
+  currentIndex = (currentIndex + 1) % activeItems.length;
+  updateLightbox();
+}
+
+function prevImage() {
+  activeItems = getVisible();
+  currentIndex = (currentIndex - 1 + activeItems.length) % activeItems.length;
+  updateLightbox();
+}
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'ArrowRight') nextImage();
+  if (e.key === 'ArrowLeft') prevImage();
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// Touch swipe
+let touchStartX = 0;
+document.getElementById('lightbox').addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].clientX;
+});
+document.getElementById('lightbox').addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) { if (diff > 0) nextImage(); else prevImage(); }
+});
+</script>
+</body>
+</html>
