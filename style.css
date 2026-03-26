@@ -769,6 +769,7 @@ footer {
         display: none;
     }
     .mobile-book-btn {
+        color: var(--teal) !important;
         display: inline-flex;
         justify-content: center;
         width: auto;
