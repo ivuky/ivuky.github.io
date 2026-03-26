@@ -1,13 +1,13 @@
 // ========== GALLERY SLIDER ==========
 const galleryImages = [
-    "img/slider/1.png",
-    "img/slider/2.png",
-    "img/slider/3.png",
-    "img/slider/4.png",
-    "img/slider/5.png",
-    "img/slider/6.png",
-    "img/slider/7.png",
-    "img/slider/8.png"
+    "img/slider/1.PNG",
+    "img/slider/2.PNG",
+    "img/slider/3.PNG",
+    "img/slider/4.PNG",
+    "img/slider/5.PNG",
+    "img/slider/6.PNG",
+    "img/slider/7.PNG",
+    "img/slider/8.PNG"
 ];
 
 let currentIdx = 2;
