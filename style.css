@@ -191,7 +191,7 @@ body {
 
 /* "Read more" button in about section */
 .more-left-btn {
-    display: inline-flex;
+    display: none;
     align-items: center;
     gap: 0.5rem;
     background: transparent;
