@@ -97,17 +97,68 @@
                                 <option value="other">Other questions</option>
                             </select>
                         </div>
-                        <div class="col-md-6 form-group mb-3" data-for="checkin">
-                            <input type="date" name="checkin" placeholder="Check‑in" data-form-field="checkin" class="form-control" id="checkin-form">
-                        </div>
-                        <div class="col-md-6 form-group mb-3" data-for="checkout">
-                            <input type="date" name="checkout" placeholder="Check‑out" data-form-field="checkout" class="form-control" id="checkout-form">
-                        </div>
-                        <div class="col-12 form-group mb-3" data-for="textarea">
-                            <textarea name="message" placeholder="Message" data-form-field="textarea" class="form-control" id="textarea-form02-40"></textarea>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
-							<button type="submit" class="btn btn-primary display-7">Send inquiry</button>
+						<div id="booking-fields" style="display: none">
+	                        <div class="col-md-6 form-group mb-3" data-for="checkin">
+	                            <input type="date" name="checkin" placeholder="Check‑in" data-form-field="checkin" class="form-control" id="checkin-form">
+	                        </div>
+	                        <div class="col-md-6 form-group mb-3" data-for="checkout">
+	                            <input type="date" name="checkout" placeholder="Check‑out" data-form-field="checkout" class="form-control" id="checkout-form">
+	                        </div>
+							<div class="col-md-6 form-group mb-3" data-for="guests">
+	                            <select name="guests" data-form-field="guests" class="form-control" value="" id="guests-form02-40">
+									<option selected="" disabled selected>Number of guests..</option>
+	                                <option value="1">1</option>
+	                                <option value="2">2</option>
+	                                <option value="3">3</option>
+	                                <option value="4">4</option>
+								</select>
+	                        </div>
+							<div class="col-md-6 form-group mb-3" data-for="pets">
+								<select name="pets" data-form-field="pets" class="form-control" value="" id="pets-form02-40">
+									<option selected="" disabled selected>Bringing you pet?</option>
+	                                <option value="yes">Yes</option>
+	                                <option value="no">No</option>
+								</select>
+	                        </div>
+							<div class="col-12 form-group mb-3" data-for="textarea">
+                            	<textarea name="message" placeholder="Write your message (additional requests, questions, etc.)" data-form-field="textarea" class="form-control" id="textarea1-form02-40"></textarea>
+                        	</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
+								<button type="submit" class="btn btn-primary display-7">Send inquiry</button>
+							</div>
+						</div>
+						<div id="feedback-fields" style="display: none">
+							<div class="col-md-6 form-group mb-3" data-for="ratings">
+	                            <select name="ratings" data-form-field="ratings" class="form-control" value="" id="ratings-form02-40">
+									<option selected="" disabled selected>How would you rate Lagooncia?</option>
+	                                <option value="5-star"> ★ ★ ★ ★ ★</option>
+	                                <option value="4-star"> ★ ★ ★ ★ ☆</option>
+	                                <option value="3-star"> ★ ★ ★ ☆ ☆</option>
+	                                <option value="2-star"> ★ ★ ☆ ☆ ☆</option>
+									<option value="1-star"> ★ ☆ ☆ ☆ ☆</option>
+								</select>
+	                        </div>
+							<div class="col-md-6 form-group mb-3" data-for="recommend">
+								<select name="recommend" data-form-field="recommend" class="form-control" value="" id="recommend-form02-40">
+									<option selected="" disabled selected>Would you recommend Lagoonica?</option>
+	                                <option value="yes">Yes</option>
+	                                <option value="no">No</option>
+								</select>
+	                        </div>
+							<div class="col-12 form-group mb-3" data-for="textarea">
+                            	<textarea name="message" placeholder="Share your thoughts with us and help others decide.." data-form-field="textarea" class="form-control" id="textarea2-form02-40"></textarea>
+                        	</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
+								<button type="submit" class="btn btn-primary display-7">Send review</button>
+							</div>
+						</div>
+						<div id="other-fields" style="display: none">
+							<div class="col-12 form-group mb-3" data-for="textarea">
+                            	<textarea name="message" placeholder="Write your message.." data-form-field="textarea" class="form-control" id="textarea3-form02-40"></textarea>
+                        	</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
+								<button type="submit" class="btn btn-primary display-7">Send message</button>
+							</div>
 						</div>
 						<input type="hidden" name="_next" value="thank-you.html">
                     	<input type="hidden" name="_subject" value="Lagoonica Inquiry">
@@ -174,12 +225,11 @@
 	
 	<script>
 	    document.addEventListener('DOMContentLoaded', function() {
-	        const serviceSelect = document.getElementById('service-select');
+	        const serviceSelect = document.getElementById('service-form02-40'); // your dropdown ID
 	        const bookingDiv = document.getElementById('booking-fields');
 	        const feedbackDiv = document.getElementById('feedback-fields');
 	        const otherDiv = document.getElementById('other-fields');
 	
-	        // Function to hide all dynamic fields and disable inputs inside them
 	        function hideAllFields() {
 	            [bookingDiv, feedbackDiv, otherDiv].forEach(div => {
 	                if (div) {
@@ -192,29 +242,25 @@
 	            });
 	        }
 	
-	        // Function to show the selected field group and enable its inputs
 	        function showFieldGroup(div) {
 	            if (div) {
-	                div.style.display = 'flex';   // or 'block' – flex works with Bootstrap grid
+	                div.style.display = 'flex'; // or 'block' – keep 'flex' for Bootstrap grid
 	                div.querySelectorAll('input, select, textarea').forEach(field => {
 	                    field.disabled = false;
 	                });
 	            }
 	        }
 	
-	        // Initial setup: hide all, then show based on default selection (none)
+	        // Initial state: hide all groups, show none
 	        hideAllFields();
 	
+	        // When dropdown changes
 	        serviceSelect.addEventListener('change', function() {
 	            hideAllFields();
 	            const value = this.value;
-	            if (value === 'booking') {
-	                showFieldGroup(bookingDiv);
-	            } else if (value === 'feedback') {
-	                showFieldGroup(feedbackDiv);
-	            } else if (value === 'other') {
-	                showFieldGroup(otherDiv);
-	            }
+	            if (value === 'booking') showFieldGroup(bookingDiv);
+	            else if (value === 'feedback') showFieldGroup(feedbackDiv);
+	            else if (value === 'other') showFieldGroup(otherDiv);
 	        });
 	    });
 	</script>
