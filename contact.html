@@ -22,9 +22,15 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Moon+Dance:400&display=swap"></noscript>
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=9ToVQl"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=9ToVQl" type="text/css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=00DY01"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=00DY01" type="text/css">
 
-  
+  <style>
+    select.form-control {
+        line-height: 1.5;
+        padding: 1.5rem;
+        height: auto;
+    }
+    </style>
   
   
 </head>
@@ -78,107 +84,115 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-                <form action="https://formspree.io/f/mnjovkbb" method="POST" class="mbr-form form-with-styler">
+                <form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="HdTwoyGDqLIpvBBQID712NSL1yKRglwHSaZJYJ1ke+BenGkYfWGFBV9FqnSrkZ9cBaqR15fb8K/xk/wy9Q2nb9dPZDDrmMMLxzXRf5Dozske7Vd/SkF9crgnq8SOfbsH">
+                    <div class="row">
+                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for reaching out! We'll respond or contact you within 12 hours.</div>
+                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
+                            Oops...! some problem!
+                        </div>
+                    </div>
                     <div class="dragArea row">
-                        <div class="col-md col-sm-12 form-group mb-3" data-for="name">
-                            <input type="text" name="name" placeholder="Name" data-form-field="name" class="form-control" value="" id="name-form02-40">
+                        <div class="col-6 form-group mb-3" data-for="name">
+                            <label for="guests" class="form-label">Name</label>
+                            <input type="text" name="name" data-form-field="name" class="form-control" value="" id="name-form02-40">
                         </div>
-                        <div class="col-md col-sm-12 form-group mb-3" data-for="email">
-                            <input type="email" name="email" placeholder="E-mail" data-form-field="email" class="form-control" value="" id="email-form02-40">
+                        <div class="col-6 form-group mb-3" data-for="email">
+                            <label for="guests" class="form-label">Email</label>
+                            <input type="email" name="email" data-form-field="email" class="form-control" value="" id="email-form02-40">
                         </div>
-                        <div class="col-12 form-group mb-3" data-for="phone">
-                            <input type="tel" name="phone" placeholder="Phone" data-form-field="phone" class="form-control" value="" id="phone-form02-40">
+                        <div class="col-6 form-group mb-3" data-for="phone">
+                            <label for="guests" class="form-label">Phone number</label>
+                            <input type="tel" name="phone" placeholder="e.g., +385123456789" data-form-field="phone" class="form-control" value="" id="phone-form02-40">
                         </div>
-                        <div class="col-12 form-group mb-3" data-for="service">
+                        <div class="col-6 form-group mb-3" data-for="service">
+                            <label for="guests" class="form-label">Select your inquiry type</label>
                             <select name="service" data-form-field="service" class="form-control" value="" id="service-form02-40">
-                                <option value="" disabled selected>I'm interested in..</option>
-                                <option value="booking">Booking a stay</option>
-                                <option value="feedback">Sending a feedback</option>
-                                <option value="other">Other questions</option>
+                                <option value="" disabled selected></option>
+                                <option value="booking">Booking</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Other</option>
                             </select>
                         </div>
-						<div id="booking-fields" style="display: none">
-							<div class="row">
-		                        <div class="col-md-6 form-group mb-3" data-for="checkin">
-		                            <input type="date" name="checkin" placeholder="Check‑in" data-form-field="checkin" class="form-control" id="checkin-form">
-		                        </div>
-		                        <div class="col-md-6 form-group mb-3" data-for="checkout">
-		                            <input type="date" name="checkout" placeholder="Check‑out" data-form-field="checkout" class="form-control" id="checkout-form">
-		                        </div>
-							</div>
-							<div class="row">
-								<div class="col-md-6 form-group mb-3" data-for="guests">
-		                            <select name="guests" data-form-field="guests" class="form-control" value="" id="guests-form02-40">
-										<option value="" disabled selected>Number of guests..</option>
-		                                <option value="1">1</option>
-		                                <option value="2">2</option>
-		                                <option value="3">3</option>
-		                                <option value="4">4</option>
-									</select>
-		                        </div>
-								<div class="col-md-6 form-group mb-3" data-for="pets">
-									<select name="pets" data-form-field="pets" class="form-control" value="" id="pets-form02-40">
-										<option value="" disabled selected>Bringing you pet?</option>
-		                                <option value="yes">Yes</option>
-		                                <option value="no">No</option>
-									</select>
-		                        </div>
-							</div>
-							<div class="row">
-								<div class="col-12 form-group mb-3" data-for="textarea">
-	                            	<textarea name="message" placeholder="Write your message (additional requests, questions, etc.)" data-form-field="textarea" class="form-control" id="textarea1-form02-40"></textarea>
-	                        	</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
-									<button type="submit" class="btn btn-primary display-7">Send inquiry</button>
-								</div>
-							</div>
-						</div>
-						<div id="feedback-fields" style="display: none">
-							<div class="row">
-								<div class="col-md-6 form-group mb-3" data-for="ratings">
-		                            <select name="ratings" data-form-field="ratings" class="form-control" value="" id="ratings-form02-40">
-										<option value="" disabled selected>How would you rate Lagooncia?</option>
-		                                <option value="5-star"> ★ ★ ★ ★ ★</option>
-		                                <option value="4-star"> ★ ★ ★ ★ ☆</option>
-		                                <option value="3-star"> ★ ★ ★ ☆ ☆</option>
-		                                <option value="2-star"> ★ ★ ☆ ☆ ☆</option>
-										<option value="1-star"> ★ ☆ ☆ ☆ ☆</option>
-									</select>
-		                        </div>
-								<div class="col-md-6 form-group mb-3" data-for="recommend">
-									<select name="recommend" data-form-field="recommend" class="form-control" value="" id="recommend-form02-40">
-										<option value="" disabled selected>Would you recommend Lagoonica?</option>
-		                                <option value="yes">Yes</option>
-		                                <option value="no">No</option>
-									</select>
-		                        </div>
-							</div>
-							<div class="row">
-								<div class="col-12 form-group mb-3" data-for="textarea">
-	                            	<textarea name="message" placeholder="Share your thoughts with us and help others decide.." data-form-field="textarea" class="form-control" id="textarea2-form02-40"></textarea>
-	                        	</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
-									<button type="submit" class="btn btn-primary display-7">Send review</button>
-								</div>
-							</div>
-						</div>
-						<div id="other-fields" style="display: none">
-							<div class="row">
-								<div class="col-12 form-group mb-3" data-for="textarea">
-	                            	<textarea name="message" placeholder="Write your message.." data-form-field="textarea" class="form-control" id="textarea3-form02-40"></textarea>
-	                        	</div>
-								<div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
-									<button type="submit" class="btn btn-primary display-7">Send message</button>
-								</div>
-							</div>
-						</div>
-						<input type="hidden" name="_next" value="thank-you.html">
-                    	<input type="hidden" name="_subject" value="Lagoonica Inquiry">
-						<input type="hidden" name="_replyto" value="email">
+                        <div id="booking-fields" style="display: none">
+                            <div class="row">
+                                <div class="col-6 form-group mb-3" data-for="checkin">
+                                    <label for="guests" class="form-label">Check-in</label>
+                                    <input type="date" name="checkin" data-form-field="checkin" class="form-control" value="" id="checkin-form02-40">
+                                </div>
+                                <div class="col-6 form-group mb-3" data-for="checkout">
+                                    <label for="guests" class="form-label">Check-out</label>
+                                    <input type="date" name="checkout" data-form-field="checkout" class="form-control" value="" id="checkout-form02-40">
+                                </div>
+                                <div class="col-4 form-group mb-3" data-for="guests">
+                                    <label for="guests" class="form-label">Number of guests</label>
+                                    <select name="guests" data-form-field="guests" class="form-control" value="" id="guests-form02-40">
+                                        <option value="" disabled selected></option>
+                                        <option value="4">4</option>
+                                        <option value="3">3</option>
+                                        <option value="2">2</option>
+                                        <option value="1">1</option>
+                                    </select>
+                                </div>
+                                <div class="col-4 form-group mb-3" data-for="kids">
+                                    <label for="guests" class="form-label">Do you require toddler bed?</label>
+                                    <select name="kids" data-form-field="kids" class="form-control" value="" id="kids-form02-40">
+                                        <option value="" disabled selected></option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                                <div class="col-4 form-group mb-3" data-for="pets">
+                                    <label for="guests" class="form-label">Are you bringing your pet?</label>
+                                    <select name="pets" data-form-field="pets" class="form-control" value="" id="pets-form02-40">
+                                        <option value="" disabled selected></option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 form-group mb-3" data-for="textarea">
+                                    <label for="guests" class="form-label">Write down additional information if needed</label>
+                                    <textarea name="textarea" data-form-field="textarea" class="form-control" id="textarea-form02-40"></textarea>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn"><button type="submit" class="btn btn-primary display-7">Send inquiry</button></div>
+                            </div>
+                        </div>
+                        <div id="feedback-fields" style="display: none">
+                            <div class="row">
+                                <div class="col-6 form-group mb-3" data-for="rating">
+                                    <label for="guests" class="form-label">Give us your rating</label>
+                                    <select name="rating" data-form-field="rating" class="form-control" value="" id="rating-form02-40">
+                                        <option value="" disabled selected></option>
+                                        <option value="5">★★★★★</option>
+                                        <option value="4">★★★★☆</option>
+                                        <option value="3">★★★☆☆</option>
+                                        <option value="2">★★☆☆☆</option>
+                                        <option value="1">★☆☆☆☆</option>
+                                    </select>
+                                </div>
+                                <div class="col-6 form-group mb-3" data-for="recommend">
+                                    <label for="guests" class="form-label">Would your recommend Lagoonica to other people?</label>
+                                    <select name="recommend" data-form-field="recommend" class="form-control" value="" id="recommend-form02-40">
+                                        <option value="" disabled selected></option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div><div class="col-12 form-group mb-3" data-for="textarea">
+                                    <label for="guests" class="form-label">Leave a message with your feedback</label>
+                                    <textarea name="textarea" data-form-field="textarea" class="form-control" id="textarea-form02-40"></textarea>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn"><button type="submit" class="btn btn-primary display-7">Send feedback</button></div>
+                            </div>
+                        </div>
+                        <div id="other-fields" style="display: none">
+                            <div class="row">
+                                <div class="col-12 form-group mb-3" style="visibility: hidden"><p>This is basic "placeholder" in code to make form width as it should be</p></div>
+                                <div class="col-12 form-group mb-3" data-for="textarea">
+                                    <label for="guests" class="form-label">Leave a message with your feedback</label>
+                                    <textarea name="textarea" data-form-field="textarea" class="form-control" id="textarea-form02-40"></textarea>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn"><button type="submit" class="btn btn-primary display-7">Send message</button></div>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -241,7 +255,7 @@
 	
 	<script>
 	    document.addEventListener('DOMContentLoaded', function() {
-	        const serviceSelect = document.getElementById('service-form02-40'); // your dropdown ID
+	        const serviceSelect = document.getElementById('service-form02-40');
 	        const bookingDiv = document.getElementById('booking-fields');
 	        const feedbackDiv = document.getElementById('feedback-fields');
 	        const otherDiv = document.getElementById('other-fields');
@@ -250,7 +264,6 @@
 	            [bookingDiv, feedbackDiv, otherDiv].forEach(div => {
 	                if (div) {
 	                    div.style.display = 'none';
-	                    // Disable all inputs inside to prevent them from being submitted
 	                    div.querySelectorAll('input, select, textarea').forEach(field => {
 	                        field.disabled = true;
 	                    });
@@ -260,17 +273,15 @@
 	
 	        function showFieldGroup(div) {
 	            if (div) {
-	                div.style.display = 'flex'; // or 'block' – keep 'flex' for Bootstrap grid
+	                div.style.display = 'flex';
 	                div.querySelectorAll('input, select, textarea').forEach(field => {
 	                    field.disabled = false;
 	                });
 	            }
 	        }
 	
-	        // Initial state: hide all groups, show none
 	        hideAllFields();
 	
-	        // When dropdown changes
 	        serviceSelect.addEventListener('change', function() {
 	            hideAllFields();
 	            const value = this.value;
