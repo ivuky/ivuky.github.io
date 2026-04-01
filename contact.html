@@ -77,104 +77,40 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
                 <form action="https://formspree.io/f/mnjovkbb" method="POST" class="mbr-form form-with-styler">
-                    <!-- Hidden fields -->
-				    <input type="hidden" name="_next" value="thank-you.html">
-				    <input type="hidden" name="_subject" value="Lagoonica Inquiry">
-				    <input type="hidden" name="_replyto" value="email">
-				
-				    <div class="dragArea row">
-				        <!-- Common fields: always visible -->
-				        <div class="col-md-6 form-group mb-3">
-				            <label for="name" class="form-label">Full name *</label>
-				            <input type="text" name="name" id="name" placeholder="e.g., John Smith" data-form-field="name" class="form-control" required>
-				        </div>
-				        <div class="col-md-6 form-group mb-3">
-				            <label for="email" class="form-label">Email address *</label>
-				            <input type="email" name="email" id="email" placeholder="e.g., hello@example.com" data-form-field="email" class="form-control" required>
-				        </div>
-				        <div class="col-md-6 form-group mb-3">
-				            <label for="phone" class="form-label">Phone (optional)</label>
-				            <input type="tel" name="phone" id="phone" placeholder="e.g., +385 91 123 4567" data-form-field="phone" class="form-control">
-				        </div>
-				
-				        <!-- Dropdown to choose inquiry type -->
-				        <div class="col-12 form-group mb-3">
-				            <label for="service-select" class="form-label">I'm interested in...</label>
-				            <select name="service" id="service-select" class="form-control" required>
-				                <option value="" disabled selected>Select an option</option>
-				                <option value="booking">Booking a stay</option>
-				                <option value="feedback">Sending feedback</option>
-				                <option value="other">Other questions</option>
-				            </select>
-				        </div>
-				
-				        <!-- Fields for Booking a stay -->
-				        <div id="booking-fields" class="dynamic-fields" style="display: none;">
-				            <div class="col-md-6 form-group mb-3">
-				                <label for="checkin" class="form-label">Check‑in date</label>
-				                <input type="date" name="checkin" id="checkin" class="form-control">
-				            </div>
-				            <div class="col-md-6 form-group mb-3">
-				                <label for="checkout" class="form-label">Check‑out date</label>
-				                <input type="date" name="checkout" id="checkout" class="form-control">
-				            </div>
-				            <div class="col-md-6 form-group mb-3">
-				                <label for="guests" class="form-label">Number of guests</label>
-				                <input type="number" name="guests" id="guests" placeholder="1–6" class="form-control" min="1" max="6">
-				            </div>
-				            <div class="col-md-6 form-group mb-3">
-				                <label for="pet" class="form-label">Bringing a pet?</label>
-				                <select name="pet" id="pet" class="form-control">
-				                    <option value="">Select...</option>
-				                    <option value="yes">Yes</option>
-				                    <option value="no">No</option>
-				                </select>
-				            </div>
-				            <div class="col-12 form-group mb-3">
-				                <label for="message-booking" class="form-label">Your message (additional requests)</label>
-				                <textarea name="message" id="message-booking" placeholder="Tell us more about your stay..." class="form-control" rows="4"></textarea>
-				            </div>
-				        </div>
-				
-				        <!-- Fields for Sending feedback -->
-				        <div id="feedback-fields" class="dynamic-fields" style="display: none;">
-				            <div class="col-md-6 form-group mb-3">
-				                <label for="rating" class="form-label">Rating (1–5)</label>
-				                <select name="rating" id="rating" class="form-control">
-				                    <option value="">Select rating</option>
-				                    <option value="5">5 ★ – Excellent</option>
-				                    <option value="4">4 ★ – Good</option>
-				                    <option value="3">3 ★ – Average</option>
-				                    <option value="2">2 ★ – Fair</option>
-				                    <option value="1">1 ★ – Poor</option>
-				                </select>
-				            </div>
-				            <div class="col-md-6 form-group mb-3">
-				                <label for="recommend" class="form-label">Would you recommend Lagoonica?</label>
-				                <select name="recommend" id="recommend" class="form-control">
-				                    <option value="">Select...</option>
-				                    <option value="yes">Yes, definitely</option>
-				                    <option value="no">No</option>
-				                </select>
-				            </div>
-				            <div class="col-12 form-group mb-3">
-				                <label for="message-feedback" class="form-label">Your review</label>
-				                <textarea name="message" id="message-feedback" placeholder="What did you like?" class="form-control" rows="4"></textarea>
-				            </div>
-				        </div>
-				
-				        <!-- Fields for Other questions -->
-				        <div id="other-fields" class="dynamic-fields" style="display: none;">
-				            <div class="col-12 form-group mb-3">
-				                <label for="message-other" class="form-label">Your question</label>
-				                <textarea name="message" id="message-other" placeholder="Ask us anything..." class="form-control" rows="4"></textarea>
-				            </div>
-				        </div>
-				
-				        <div class="col-12 align-center mbr-section-btn">
-				            <button type="submit" class="btn btn-primary">Send inquiry</button>
-				        </div>
-				    </div>
+                    <div class="dragArea row">
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="name">
+                            <input type="text" name="name" placeholder="Name" data-form-field="name" class="form-control" value="" id="name-form02-40">
+                        </div>
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="email">
+                            <input type="email" name="email" placeholder="E-mail" data-form-field="email" class="form-control" value="" id="email-form02-40">
+                        </div>
+                        <div class="col-12 form-group mb-3" data-for="phone">
+                            <input type="tel" name="phone" placeholder="Phone" data-form-field="phone" class="form-control" value="" id="phone-form02-40">
+                        </div>
+                        <div class="col-12 form-group mb-3" data-for="service">
+                            <select name="service" data-form-field="service" class="form-control" value="" id="service-form02-40">
+                                <option selected="" disabled selected>I'm interested in..</option>
+                                <option value="booking">Booking a stay</option>
+                                <option value="feedback">Sending a feedback</option>
+                                <option value="other">Other questions</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 form-group mb-3" data-for="checkin">
+                            <input type="date" name="checkin" placeholder="Check‑in" data-form-field="checkin" class="form-control" id="checkin-form">
+                        </div>
+                        <div class="col-md-6 form-group mb-3" data-for="checkout">
+                            <input type="date" name="checkout" placeholder="Check‑out" data-form-field="checkout" class="form-control" id="checkout-form">
+                        </div>
+                        <div class="col-12 form-group mb-3" data-for="textarea">
+                            <textarea name="message" placeholder="Message" data-form-field="textarea" class="form-control" id="textarea-form02-40"></textarea>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
+							<button type="submit" class="btn btn-primary display-7">Send inquiry</button>
+						</div>
+						<input type="hidden" name="_next" value="thank-you.html">
+                    	<input type="hidden" name="_subject" value="Lagoonica Inquiry">
+						<input type="hidden" name="_replyto" value="email">
+                    </div>
                 </form>
             </div>
         </div>
